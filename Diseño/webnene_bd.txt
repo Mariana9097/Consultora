@@ -1,0 +1,16 @@
+CREATE 	DATABASE consultora;
+USE consultora;
+CREATE TABLE colaborador (
+                  id INT NOT NULL  AUTO_INCREMENT,
+	nombre VARCHAR(25) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	password VARCHAR(10) NOT NULL,
+	fechaRegistro DATETIME NOT NULL,
+	activo TINYINT NOT NULL,
+                  telefono INT NOT NUL,
+                  
+	PRIMARY KEY(id)
+
+
+
+);

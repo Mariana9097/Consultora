@@ -1,0 +1,71 @@
+ #boton{
+ 
+  padding: 20px;
+  width: 40%;
+  margin-bottom: 20px;
+  
+}
+     @media (max-width:800px) { 
+     .carusel1{
+       width:100%;
+       height:200px;
+     }
+      .ocultar2{
+        display:none;
+      }
+       textarea{
+  min-height: 200px;
+  max-height: 400px;
+  width: 100%;
+  margin-bottom: 20px
+}
+#nomb{
+     padding: 10px;
+     width: 100%;
+   }
+   #email{
+     padding: 10px;
+     width: 100%;
+   }
+    #selectProv{
+     padding: 10px;
+     width: 100%;
+   }
+       
+    
+  }
+    @media (min-width:801px) { 
+    
+       .ocultar1{
+        display:none;
+      }
+       textarea{
+  min-height: 200px;
+  max-height: 400px;
+  width: 75%;
+  margin-bottom: 20px
+}
+  
+  * #nomb{
+     padding: 10px;
+     width: 75%;
+   }
+   #email{
+     padding: 10px;
+     width: 75%;
+   }
+    #selectProv{
+     padding: 10px;
+     width: 75%;
+   }
+ }
+   .contactenos{
+  text-align: center;
+  border-radius: 2px;
+  justify-content: center;
+  margin:  100px auto;
+
+   }
+  select:invalid { color: gray; }
+
+   

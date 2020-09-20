@@ -1,0 +1,52 @@
+body{
+	margin:0;
+}
+form{
+	
+	margin: auto;
+	margin-top: 80px;
+	background: #DCCE92;
+	text-align: center;
+	box-sizing: border-box;
+	border-radius: 2px;
+	padding: 50px 50px;
+	}
+h2{
+	text-align: center;
+}
+	
+
+
+input, textarea{
+	width:90%;
+	margin-bottom: 20px;
+	padding: 7px;
+	box-sizing: border-box;
+	font-size: 16px;
+	border: none;
+}
+#prov, #dep, #cpostal{
+	width: 29%;
+}
+textarea{
+	min-height: 100px;
+	max-height: 200px;
+}
+#boton{
+	background:#00686E;
+	color: #fff;
+	padding: 20px;
+	width: 60%;
+
+}
+.nive{
+	max-width: 29%;
+	padding: 15px;
+	color: #fff;
+	background:#00686E;
+	display: block;
+    font-size: 16px;
+
+}
+
+

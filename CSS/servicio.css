@@ -1,0 +1,41 @@
+#servicio1{
+    width: 100%;
+    height: 300px;
+    background: #00686E;
+    color: #fff;
+   
+}
+#servicio2{
+	width: 100%;
+    padding: 80px;
+    background: #00686E;
+    color: #fff;
+   
+}
+#servicio3{
+	width: 100%;
+   padding: 80px  ;
+    background: #00686E;
+    color: #fff;
+    
+}
+
+.contenedor{
+
+}
+h1{
+	font-size: 35px;
+	text-align: center;
+    margin-top: 200px;
+}
+
+h6{
+	text-align: right;
+}
+ @media (max-width:680px) { 
+    .titulo{
+        font-size:26px;
+        margin-top:50%;
+    }
+    
+      }

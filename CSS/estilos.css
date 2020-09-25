@@ -12,7 +12,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;/* para contener todo cuando sea responsive*/
+    box-sizing: content-box;/* para contener todo cuando sea responsive*/
 }
 
 body {

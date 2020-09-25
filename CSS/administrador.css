@@ -1,0 +1,13 @@
+.navbar{
+	background-color:#2692A3 !important;
+}
+#header{
+	background: #282828;
+	color: #fff;
+    padding-bottom: : 10px;
+    margin-bottom: 15px;
+}
+#header .crear{
+	padding-top: 10px ;
+	padding-bottom: 10px ;
+}

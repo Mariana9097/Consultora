@@ -60,17 +60,17 @@ var ldk = document.createElement('script');
   <div class="carousel-inner carusel1" >
     <div class="carousel-item active">
     
-      <img src="imagenes/vision1.png" class="d-block w-100" alt="..." style="height:200px; ">
+      <img src="imagenes/vision1.png" class="d-block w-100" alt="..." style="height:300px;">
 
     </div>
     <div class="carousel-item">
-      <img src="imagenes/objetivoesc1.png" class="d-block w-100" alt="..." style="height:200px; ">
+      <img src="imagenes/objetivoesc1.png" class="d-block w-100" alt="..." style="height:300px; ">
     </div>
     <div class="carousel-item">
-      <img src="imagenes/quinesSomosesc2.png" class="d-block w-100" alt="..." style="height:200px; ">
+      <img src="imagenes/quinesSomosesc2.png" class="d-block w-100" alt="..." style="height:300px; ">
     </div>
     <div class="carousel-item">
-      <img src="imagenes/quehacemosesc.png" class="d-block w-100" alt="..."style="height:200px; " >
+      <img src="imagenes/quehacemosesc.png" class="d-block w-100" alt="..."style="height:300px; " >
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -85,11 +85,11 @@ var ldk = document.createElement('script');
   <div class="col-sm-12" style="margin-top:70px;">
     
       <a name="tema1"></a> 
-         <img src="imagenes/principal1.png" alt="..." style="width:100% "> 
-         <img src="imagenes/principal2.png" alt="..." style="width:100%;margin-top:20px"> 
-         <img src="imagenes/principal3.png" alt="..." style="width:100% ;margin-top:20px"> 
-         <img src="imagenes/principal4.png" alt="..." style="width:100%;margin-top:20px "> 
-         <img src="imagenes/principal5.png" alt="..." style="width:100% ;margin-top:20px"> 
+        <img src="imagenes/vision[2058].png" alt="..." style="width:100% "> 
+         <img src="imagenes/principal2.png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/q hacemos[2056].png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/q somos[2057].png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/nuestro objetivo[2054].png" alt="..." style="width:100% ;margin-top:20px"> 
   </div>
 
 
@@ -130,20 +130,20 @@ var ldk = document.createElement('script');
 <div class="col-sm-12" style="margin-top:70px; margin-left:50px">
     
       <a name="tema1"></a> 
-         <img src="imagenes/principal1.png" alt="..." style="width:41% "> 
-         <img src="imagenes/principal2.png" alt="..." style="width:40% ;margin-top:20px"> 
-         <img src="imagenes/principal4.png" alt="..." style="width:60% ;margin-top:20px"> 
-         <img src="imagenes/principal3.png" alt="..." style="width:60% ;margin-top:20px"> 
-         <img src="imagenes/principal5.png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/vision[2058].png" alt="..." style="width:61% "> 
+         <img src="imagenes/principal2.png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/q hacemos[2056].png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/q somos[2057].png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/nuestro objetivo[2054].png" alt="..." style="width:60% ;margin-top:20px"> 
   </div>
  </section>
   
             
- <div class="col" style="background: linear-gradient(to bottom, #2a80a8, #AED6F1); margin-top:-40px">
+ <div class="col" style="background: linear-gradient(to bottom, #2a80a8, #AED6F1); margin-bottom:-100px">
    <a name="tema3"></a>
     <div class="container contactenos">
-    
-    <h2 >CONTACTANOS</h2>
+    <br>
+    <h2>Contáctanos</h2>
     <h5>Ante dudas o para más información no dude en consultarnos</h5>
     <br>         
  <form action="mailto:marianalucialopez@hotmail.com" method="post" enctype="text/plain" >
@@ -162,7 +162,7 @@ var ldk = document.createElement('script');
              
            </div>
            
-        <input type="submit" value="Enviar" id="boton" class="btn btn-lg btn-primary" style="background-color:#2874A6" > 
+        <input type="submit" value="Enviar" id="boton" class="btn btn-lg btn-primary" style="background-color:#2874A6; margin-bottom:80px" > 
 </form>
  </div> 
   

@@ -41,15 +41,17 @@ var ldk = document.createElement('script');
 
         ?>
 
-    <div >
+    <div style="background-color: lightgrey">
        <img src="imagenes/banner2.1.png" class="w-100 " alt="...">
     </div>
        
-<body style="background: #CDCDCD;" >
+<body style=" background-image: url('imagenes/fondoOscuro.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;" >
     <section class="my-5 ocultar1 " >
     
     <!--  Carousel version telefono-->
-      <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel" style="width:100%; ">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:100%; ">
 
       <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -72,7 +74,7 @@ var ldk = document.createElement('script');
     <div class="carousel-item">
       <img src="imagenes/quehacemosesc.png" class="d-block w-100" alt="..."style="height:300px; " >
     </div>
-  </div>
+  </div
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -85,11 +87,13 @@ var ldk = document.createElement('script');
   <div class="col-sm-12" style="margin-top:70px;">
     
       <a name="tema1"></a> 
-        <img src="imagenes/vision[2058].png" alt="..." style="width:100% "> 
-         <img src="imagenes/principal2.png" alt="..." style="width:100% ;margin-top:20px"> 
-         <img src="imagenes/q hacemos[2056].png" alt="..." style="width:100% ;margin-top:20px"> 
-         <img src="imagenes/q somos[2057].png" alt="..." style="width:100% ;margin-top:20px"> 
-         <img src="imagenes/nuestro objetivo[2054].png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/visionSF.png" alt="..." style="width:100% "> 
+         <img src="imagenes/objetivoSF.png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/quehacemoSF.png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/quesomosSF.png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/nuestroservicioSF.png" alt="..." style="width:100% ;margin-top:20px"> 
+         <img src="imagenes/nuestrosvaloresSF.png" alt="..." style="width:100% ;margin-top:20px">
+         <img src="imagenes/politicatrabajoSF.png" alt="..." style="width:100% ;margin-top:20px">
   </div>
 
 
@@ -130,16 +134,19 @@ var ldk = document.createElement('script');
 <div class="col-sm-12" style="margin-top:70px; margin-left:50px">
     
       <a name="tema1"></a> 
-         <img src="imagenes/vision[2058].png" alt="..." style="width:61% "> 
-         <img src="imagenes/principal2.png" alt="..." style="width:60% ;margin-top:20px"> 
-         <img src="imagenes/q hacemos[2056].png" alt="..." style="width:60% ;margin-top:20px"> 
-         <img src="imagenes/q somos[2057].png" alt="..." style="width:60% ;margin-top:20px"> 
-         <img src="imagenes/nuestro objetivo[2054].png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/visionSF.png" alt="..." style="width:61% "> 
+         <img src="imagenes/objetivoSF.png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/quehacemoSF.png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/quesomosSF.png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/nuestroservicioSF.png" alt="..." style="width:60% ;margin-top:20px"> 
+         <img src="imagenes/nuestrosvaloresSF.png" alt="..." style="width:60% ;margin-top:20px">
+         <img src="imagenes/politicatrabajoSF.png" alt="..." style="width:60% ;margin-top:20px">
+        
   </div>
  </section>
   
             
- <div class="col" style="background: linear-gradient(to bottom, #2a80a8, #AED6F1); margin-bottom:-100px">
+ <div class="col" style="margin-bottom:-100px">
    <a name="tema3"></a>
     <div class="container contactenos">
     <br>

@@ -51,8 +51,6 @@
     border: none;
     padding: 10px;
     cursor: pointer;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
     font-weight: bold;
   }
    .tabContainer .buttonContainer button:hover{
@@ -63,13 +61,14 @@
    .tabContainer .tabPanel{
     height: 100%;
     display:none;
-    background-color: gray;
+    background: linear-gradient(to bottom, #AED6F1,#2874A6);
     padding-top: 105px;
     box-sizing: border-box;
 
    }
    .container{
     margin-bottom: 100px;
+
    }
   #label_general{
     font-size: 18px;
@@ -105,7 +104,7 @@ input[type=button] {
 	include "cabeceraLogin.html";
 
 ?>
- <body style="background: linear-gradient(to bottom, #2874A6, #AED6F1);" >
+ <body style="background: linear-gradient(to bottom, #FAFAFA, #AED6F1);" >
 
  	<a href="proyectos.php" class="btn btn-info my-2 mx-2">Volver</a>
  	<div class="container" >
@@ -113,9 +112,9 @@ input[type=button] {
   
   <div class="tabContainer">
     <div class="buttonContainer">
-      <button onclick="showPanel(0,'#AED6F1')">General</button>
-      <button onclick="showPanel(1,'#D4E6F1')">Colaboradores</button>
-      <button onclick="showPanel(2,'#A9CCE3')">Tareas</button>
+      <button  style="border-top-left-radius: 20px; " onclick="showPanel(0,'#AED6F1')">GENERAL</button>
+      <button onclick="showPanel(1,'#AED6F1')">COLABORADORES</button>
+      <button style="border-top-right-radius: 20px;" onclick="showPanel(2,'#AED6F1')">TAREAS</button>
     </div>
 
     <div class="tabPanel">
@@ -157,7 +156,7 @@ input[type=button] {
             </div>
         </form>
     </div>
-    <div class="tabPanel">
+    <div class="tabPanel" >
       <div class="contenedorPanel" style="margin-top:-80px">
         <button class="btn btn-info mx-3"  id="add_field" style="margin-bottom:20px;font-weight: bold;">+ Añadir colaborador</button>
         
@@ -167,9 +166,57 @@ input[type=button] {
       </div>
       </div>
       
-    <div class="tabPanel">Tareas
+    <div class="tabPanel">
         <div class="contenedorPanel" style="margin-top:-80px">
-        <button class="btn btn-info "  id="add_field" style="margin-bottom:20px;font-weight: bold;">+ Añadir tareas</button>
+        <button class="btn btn-info "  data-toggle="modal" data-target="#staticBackdrop" id="add_field" style="margin-bottom:20px;font-weight: bold;">+ Añadir tareas</button>
+            <div class="table-responsive">
+        <table class="table table-secondary table-hover table-bordered text-center" style="background:#B2EBF2">
+        
+            <?php
+            $con = new mysqli("localhost","root","","consultora");
+            setlocale(LC_ALL, 'Spanish'); //Formato de fechas en español strftime("%A %d %B %Y %H:%M:%S", strtotime(fecha));
+            $tareas = $con->query("SELECT * FROM tareas WHERE proyecto_id = 1 
+                ORDER BY (fechaInicioTarea) DESC");
+        
+            if (($tareas->num_rows) > 0) {
+
+                echo "<thead>
+                            <tr>
+                                <th>Tarea</th>
+                                <th>Descripción</th>
+                                <th>Fecha inicio</th>
+                                <th>Fecha fin</th>
+                                <th>Encargado</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id= 'Publicaciones'>";
+                while ($resultado = $tareas->fetch_assoc()) {
+                    $encargado = $con->query("SELECT * FROM colaborador WHERE id='" . $resultado['colaborador_id'] . "'")->fetch_assoc();
+                   
+                    if($resultado['finalizada']==0){
+                      $result="Finalizada"; 
+                    }else{
+                       $result="Sin realizar";  
+                    }
+                    $fechaFormateada = strftime("%d de %B ", strtotime($resultado['fechaInicioTarea']));
+                    echo "<tr>
+                        <td><a>" . $resultado['nombreTarea'] . "</a></td>
+                        <td><a class='btn btn-light' onclick='setearPublicacion(" . $resultado['id'] . ");' data-toggle='modal' data-target='#modalVerPublicacion' style='background-color:#DCDCDC'>Ver</a></td>
+                        <td>" . $fechaFormateada . "</td>
+                        <td>" . $resultado['fechaFinTarea'] . "</td> 
+                        <td><img style='width:50px;height:50px;border-radius:155px; border:1px solid #666;' src='imagenes/ejemplo.jpg'>  " . $encargado['apellido'] . ", " . $encargado['nombre'] . "</td> 
+                        <td>".$result."</td>
+                       
+                        </tr>";
+                }
+            } 
+        
+            echo "</tbody>";
+            ?>
+        
+        </table>
+    </div>
       </div>
 
 
@@ -179,6 +226,46 @@ input[type=button] {
   </div>
 </div>
 
+</div>
+
+  <!-- Modal tarea nueva-->
+<div class="modal fade modal-lg" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true"  style="margin-top:130px ;">
+    <div class="modal-dialog text-center" >
+        <div class="modal-content" style="background: linear-gradient(to bottom, #2874A6, #AED6F1);"  >
+               
+            <div class="modal-body" >
+             
+               <h5 class="modal-title my-2" id="staticBackdropLabel" style="color:white"> Nueva tarea</h5>
+               <div class="row">
+                <div class="col-md-6">
+                   Nombre de la tarea<input type="text" class="form-control"></input>
+                </div>
+                <div class="col-md-6">
+                  Encargado de realizarla <input class="form-control"></input>
+                </div>
+               </div>
+               <div class="row">
+                <div class="col-md-6">
+                  Fecha de comienzo<input type="date" class="form-control"></input>
+                </div>
+                <div class="col-md-6">
+                  Fecha de finalización<input type="date" class="form-control"></input>
+                </div>
+               </div>
+               <div class="row">
+                <div class="col-md-12">
+                  Descripción de la tarea<textarea class="form-control"></textarea>
+                </div>
+               </div> 
+                <div class="col-md-12 text-center" >
+                 <button type="button" class="btn btn-primary  my-4 mx-2" style="background-color:#2874A6; ">Guardar</button>            
+                 <button type="button" class="btn btn-outline-secondary my-4 mx-5" data-dismiss="modal" id="btnCerrar" >Cerrar</button>
+          
+             </div>
+          </div>
+           </div>
+           </div>
+    </div>
 </div>
  </body>
  <script>
@@ -190,8 +277,9 @@ input[type=button] {
       node.style.backgroundColor="";
       node.style.color="";
 
+
     });
-      tabButtons[panelIndex].style.backgroundColor=colorCode;
+      tabButtons[panelIndex].style.backgroundColor=colorCode; 
       tabButtons[panelIndex].style.color="black";
       tabPanels.forEach(function(node){
       node.style.display="none";
@@ -221,11 +309,8 @@ input[type=button] {
                                 <option value="nombre">\
                             </datalist>\
                             <select class="col-md-2 form-control" id="select_cargo" name="select_cargo">\
-                                <option  selected disabled >Puesto</option>\
-                                <option value="1">1</option>\
-                                <option value="2">2</option>\
-                                <option value="3">3</option>\
-                                <option value="4">4</option>\
+                                <option selected value="1">Colaborador</option>\
+                                <option value="2">Encargado</option>\
                             </select>\
                                <label class="col-md-4">colaborador@gmail.com</label>\
                                 <a href="#" class="remover_campo col-md-2">Remover</a>\

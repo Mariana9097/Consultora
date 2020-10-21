@@ -1,5 +1,5 @@
 <?php
-include "conexionBD.php";
+include "../conexionBD.php";
 
 
 $email = $_POST["email"];

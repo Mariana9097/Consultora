@@ -6,8 +6,8 @@
         <html lang="es">
            <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
-       <link rel="stylesheet" href="CSS/fontello.css">
-        <link rel="stylesheet"  href="css/curriculum.css" type="text/css">
+       <link rel="stylesheet" href="../CSS/fontello.css">
+        <link rel="stylesheet"  href="../CSS/curriculum.css" type="text/css">
          
       <script type="text/javascript" src="validacionEmp.js"></script>  
 

@@ -101,7 +101,7 @@ input[type=button] {
 }
  </style>
  <?php
-	include "cabeceraLogin.html";
+	include "../cabeceraLogin.html";
 
 ?>
  <body style="background: linear-gradient(to bottom, #FAFAFA, #AED6F1);" >
@@ -328,7 +328,7 @@ input[type=button] {
 
 
  <?php
-        include "footer.html"
+        include "../footer.html"
 
      ?>
 </html>

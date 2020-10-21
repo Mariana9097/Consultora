@@ -8,6 +8,7 @@
 </head>
 <?php
 include "cabeceraLogin.html";
+include "../conexionDB.php";
 
 ?>
 <body>
@@ -18,6 +19,7 @@ include "cabeceraLogin.html";
 	    </div>
 	    <div class='col-md-12' style='width:80%'>
 	    <?php
+
         $con = new mysqli("localhost","root","","consultora");
 	    $consultaProyectos = $con->query("SELECT * FROM proyecto WHERE  fechaFinProy IS NULL");
 	    while ($resultadoProyecto = $consultaProyectos->fetch_assoc()) {

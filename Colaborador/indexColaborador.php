@@ -23,7 +23,7 @@
  <style >
 
  body{
-  background-image: url("imagenes/Sin título.png");
+  background-image: url("../imagenes/Sin título.png");
   background-image: no-repeat;
   background-image: fixed;
   background-image: center;
@@ -39,7 +39,7 @@
 </head>
 
 <?php
-include "cabeceraLogin.html";
+include "../cabeceraLogin.html";
 
 ?>
 

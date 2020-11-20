@@ -25,7 +25,7 @@
  <style >
   .tabContainer{
     width:100%;
-    height:800px;
+    
   }
    @media (max-width:850px) {
      .tabContainer{
@@ -45,7 +45,7 @@
 
   }
   .tabContainer .buttonContainer button{
-    width: 30%;
+    width: 32%;
     height: 100% ;
     float: left;
     border: none;
@@ -59,7 +59,7 @@
   
    }
    .tabContainer .tabPanel{
-    height: 100%;
+    min-height: 100%;
     display:none;
     background: linear-gradient(to bottom, #AED6F1,#2874A6);
     padding-top: 105px;
@@ -102,6 +102,7 @@ input[type=button] {
  </style>
  <?php
 	include "../cabeceraLogin.html";
+  include "../conexionBD.php";
 
 ?>
  <body style="background: linear-gradient(to bottom, #FAFAFA, #AED6F1);" >
@@ -112,11 +113,12 @@ input[type=button] {
   
   <div class="tabContainer">
     <div class="buttonContainer">
-      <button  style="border-top-left-radius: 20px; " onclick="showPanel(0,'#AED6F1')">GENERAL</button>
-      <button onclick="showPanel(1,'#AED6F1')">COLABORADORES</button>
-      <button style="border-top-right-radius: 20px;" onclick="showPanel(2,'#AED6F1')">TAREAS</button>
+      <button  style="border-top-left-radius: 20px; outline:none; " onclick="showPanel(0,'#AED6F1')">GENERAL</button>
+      <button onclick="showPanel(1,'#AED6F1')" style="outline:none;">COLABORADORES</button>
+      <button style="border-top-right-radius: 20px; outline:none;" onclick="showPanel(2,'#AED6F1')">SEGUIMIENTO</button>
     </div>
 
+  <!--SECCION GENERAL-->
     <div class="tabPanel">
       <form class="contform mx-5 ">
             <div class="form-group row">
@@ -156,6 +158,8 @@ input[type=button] {
             </div>
         </form>
     </div>
+
+  <!--SECCION TAREAS-->  
     <div class="tabPanel" >
       <div class="contenedorPanel" style="margin-top:-80px">
         <button class="btn btn-info mx-3"  id="add_field" style="margin-bottom:20px;font-weight: bold;">+ Añadir colaborador</button>
@@ -166,54 +170,19 @@ input[type=button] {
       </div>
       </div>
       
-    <div class="tabPanel">
-        <div class="contenedorPanel" style="margin-top:-80px">
-        <button class="btn btn-info "  data-toggle="modal" data-target="#staticBackdrop" id="add_field" style="margin-bottom:20px;font-weight: bold;">+ Añadir tareas</button>
-            <div class="table-responsive">
-        <table class="table table-secondary table-hover table-bordered text-center" style="background:#B2EBF2">
-        
-            <?php
-            $con = new mysqli("localhost","root","","consultora");
-            setlocale(LC_ALL, 'Spanish'); //Formato de fechas en español strftime("%A %d %B %Y %H:%M:%S", strtotime(fecha));
-            $tareas = $con->query("SELECT * FROM tareas WHERE proyecto_id = 1 
-                ORDER BY (fechaInicioTarea) DESC");
-        
-            if (($tareas->num_rows) > 0) {
 
-                echo "<thead>
-                            <tr>
-                                <th>Tarea</th>
-                                <th>Descripción</th>
-                                <th>Fecha inicio</th>
-                                <th>Fecha fin</th>
-                                <th>Encargado</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody id= 'Publicaciones'>";
-                while ($resultado = $tareas->fetch_assoc()) {
-                    $encargado = $con->query("SELECT * FROM colaborador WHERE id='" . $resultado['colaborador_id'] . "'")->fetch_assoc();
-                   
-                    if($resultado['finalizada']==0){
-                      $result="Finalizada"; 
-                    }else{
-                       $result="Sin realizar";  
-                    }
-                    $fechaFormateada = strftime("%d de %B ", strtotime($resultado['fechaInicioTarea']));
-                    echo "<tr>
-                        <td><a>" . $resultado['nombreTarea'] . "</a></td>
-                        <td><a class='btn btn-light' onclick='setearPublicacion(" . $resultado['id'] . ");' data-toggle='modal' data-target='#modalVerPublicacion' style='background-color:#DCDCDC'>Ver</a></td>
-                        <td>" . $fechaFormateada . "</td>
-                        <td>" . $resultado['fechaFinTarea'] . "</td> 
-                        <td><img style='width:50px;height:50px;border-radius:155px; border:1px solid #666;' src='imagenes/ejemplo.jpg'>  " . $encargado['apellido'] . ", " . $encargado['nombre'] . "</td> 
-                        <td>".$result."</td>
-                       
-                        </tr>";
-                }
-            } 
+  <!--SECCION SEGUIMIENTO-->      
+    <div class="tabPanel">
+        <div class="contenedorPanel" style="margin-top:-80px;">
+        <button type="button" class="btn btn-primary btn-lg mx-2 "  id="btnenviar">Enviar</button>
+            <div class="table-responsive" style="padding:30px;">
+        <table id='dataTable' class="table table-secondary table-hover table-bordered text-center" style="background:#B2EBF2;"><!--table-layout: fixed;-->
         
-            echo "</tbody>";
-            ?>
+          <?php
+           
+           include "../buscarTareas.php";
+          
+          ?>
         
         </table>
     </div>
@@ -221,6 +190,12 @@ input[type=button] {
 
 
     </div>
+      
+   
+  </div>
+</div>
+
+
       
    
   </div>
@@ -266,6 +241,39 @@ input[type=button] {
            </div>
            </div>
     </div>
+
+<!-- Modal ver CV-->
+<div class="modal fade" id="staticBackdrop3" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="background: linear-gradient(to bottom, #2874A6, #AED6F1);" >
+    
+      <div class="modal-body" style="background:#FAFAFA;">
+        <label>Silvia Montenegro</label>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        
+        <input readonly hidden name="mcvid" id="mcvid" >
+      <br>
+      <?php
+       $id = "estudios";
+       //$estudios = $con->query("SELECT * FROM tareas WHERE proyecto_id = 1 ORDER BY (fechaInicioTarea) DESC");
+       //$cursos = $con->query("SELECT * FROM cursos WHERE colaborador_id = 1 ORDER BY (fechaInicioTarea) DESC");
+     
+      echo "<h6>Estudios</h6>
+      <div id='mestudios'> $id_colab</div>";
+        ?>
+      <hr class='white'>
+      <h6>Cursos</h6>
+      <div class="lista" id='mcursos'></div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
  </body>
  <script>
@@ -312,7 +320,9 @@ input[type=button] {
                                 <option selected value="1">Colaborador</option>\
                                 <option value="2">Encargado</option>\
                             </select>\
-                               <label class="col-md-4">colaborador@gmail.com</label>\
+                            <form action="../buscarcv.php" method="POST">\
+                            <a data-toggle="modal" type="submit" data-target="#staticBackdrop3" class="btn btn-outline-info col-md-1 mx-5 my-2" style="border:none; background-color:#85C1E9">CV</a>\
+                            </form>   
                                 <a href="#" class="remover_campo col-md-2">Remover</a>\
                                 </div>');
                         x++;
@@ -326,11 +336,15 @@ input[type=button] {
         });
 </script>
 
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script src="../paginacion.js"></script>
+
 
  <?php
         include "../footer.html"
 
-     ?>
+  ?>
 </html>
 
 

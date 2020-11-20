@@ -163,5 +163,5 @@ $con->query("INSERT INTO conColaborador (conocimientos, cv, linked, colab_id)
 //}
 
 //move_uploaded_file($cv, 'curriculums. '/' .$nombre_archivo');
-//header("location: login.php");
+header("location: ../principal.php");
 

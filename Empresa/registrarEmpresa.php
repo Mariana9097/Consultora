@@ -54,7 +54,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <h6  style="color:white; font-family: 'FontAwesome', sans-serif; font-size: 30px;"><img src="imagenes/lo.png"  id="logo" oncontextmenu="return false" style="height:25px">Consultoria </h6>
+        <h6  style="color:white; font-family: 'FontAwesome', sans-serif; font-size: 30px;"><img src="../imagenes/lo.png"  id="logo" oncontextmenu="return false" style="height:25px">Consultoria </h6>
     </div>
 
 
@@ -165,6 +165,6 @@
       
 
 <?php
-        include "footerB3.html"
+        include "../footerB3.html"
      ?>
 </html>

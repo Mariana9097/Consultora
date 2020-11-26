@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE HTML>
 
 <html>
@@ -60,40 +63,62 @@
     <input type="submit" value="Ingresar" id="inicio" class="btn btn-primary btn-block m-auto" style="width:6rem; font-size: large;">
       </form>
      <a class="btn btn-link my-2" href="restablecer-contrasenia.php">Olvidé mi contraseña</a>
-     <a href="#" class="btn btn-link my-2" data-toggle="modal" data-target="#staticBackdrop">REGISTRARME</a>
+      <a href="#" class="btn btn-link my-2" data-toggle="modal" data-target="#staticBackdrop1">REGISTRARME</a>
+    </div>
+
 
   </div>
  
     
 
  
- 
- 
- <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true"  style="margin-top:130px ;">
-    <div class="modal-dialog text-center" >
-        <div class="modal-content"  >
-               
-            <div class="modal-body" >
-             
-               <h5 class="modal-title my-2" id="staticBackdropLabel" style="color:white"> Registrame como</h5>
-               
-         
-                    <a href="registrarEmpresa.php" class="btn btn-outline-light btn-lg  my-4"  style="width:45%; height:70px "><strong>Empresa</strong></a>
-          
-                    <a href="curriculum.php" class="btn btn-outline-light btn-lg my-4 " style="width:45%; height:70px;"><strong>Colaborador</strong></a>
-       
-             <br><br><br>
-             <div class="text-right ">
-               <button type="button" class="btn btn-outline-secondary my-1" data-dismiss="modal" id="btnCerrar" >Cerrar</button>
+<!-- Modal importar nomina completa de usuarios -->
+<div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h3 class="modal-title " id="staticBackdropLabel">Importar lista</h3>
             </div>
-          </div>
-           </div>
-    </div>
-</div>
+            
+           
+             <form method="POST" id="importPlanilla" name="importPlanilla" action="importMasivousuarioS.php" enctype="multipart/form-data" role="form">
+            
+            <div class="modal-body" 
 
+               
+                
+                <div>
+                    <h9>La extension para la lista debe ser .xlsx y los campos deben estar ordenados como se muestra a continuación: </h9>
+
+                    <table class="table table-bordered text-center table-info">
+                       
+                    </table>
+
+                </div>
+
+                
+                    <div class="container" style="margin-top:50px;">
+
+                        <div class="custom-file">
+                            <input type="file" class="form-control-file" name="inpGetFile" id="inpGetFile" accept=".xlsx" onchange="comprobarLista()" lang="es" required>
+
+                        </div>
+                    </div>
+                
+                </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="btnImportar" type="submit" class="btn btn-primary " disabled <?php if($dni == null){echo "style='display:none' ";} ?>>Importar</button>
+                    </div>
+
+                </form>
+            
+
+        </div>
+    </div>
  
 
-
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -9,6 +9,8 @@ include "../class.upload.php";
     $formatoIncorrecto = [];
 
     if (isset($_FILES["inpGetFile"])) {
+        
+        $idempresa = $_POST["empresaImport"];
 
         $up = new Upload($_FILES["inpGetFile"]);
 
@@ -31,40 +33,54 @@ include "../class.upload.php";
                 $row = 1;
             
                     $nombre = $sheet->getCell("A" . $row)->getValue();
-                    $email = $sheet->getCell("B" . $row)->getValue();
-                    $telefono = $sheet->getCell("C" . $row)->getValue();
+                    $cuil = $sheet->getCell("B" . $row)->getValue();
+                    $email = $sheet->getCell("C". $row)->getValue();
+                    $telefono = $sheet->getCell("D" . $row)->getValue();
 
                     //valido que la primera fila de la tabla excel sea
                     //dni, apellido, nombre, en ese orden, sino esta asi no importa la lista 
 
                     $nombre_p = strtolower($nombre);
+                    $cuil_p = strtolower($cuil);
                     $email_p = strtolower($email);
                     $telefono_p = strtolower($telefono);
-
+           
                     
                         for ($row = 2; $row <= $highestRow; $row++) {
 
                             $nombre = $sheet->getCell("A" . $row)->getValue();
-                            $email = $sheet->getCell("B" . $row)->getValue();
-                            $telefono = $sheet->getCell("C" . $row)->getValue();
+                            $cuil = $sheet->getCell("B" . $row)->getValue();
+                            $email = $sheet->getCell("C" . $row)->getValue();
+                            $telefono = $sheet->getCell("D" . $row)->getValue();
 
-                            $consultaAl = $con->query("SELECT * FROM clientes WHERE email = '$email'");
+                            $consultaAl = $con->query("SELECT * FROM clientes WHERE  cuilcliente = '$cuil' AND fechaBajaCliente IS NULL");
                             
-                            if (mysqli_num_rows($consultaAl) == 0) {
-                                
-                                
-                                    $rtdo = $con->query('INSERT INTO clientes (nombrecliente, email, telefonocliente, fechaAltaCliente) VALUES ("' . $nombre . '","' . $email . '", "' . $telefono . '","' . $currentDate . '");');
+                            if (mysqli_num_rows($consultaAl) == 0 ) {
                                     
-                                    array_push($correcto, $nombre);
+                                    if($nombre!=''){
+                                        $rtdo = $con->query('INSERT INTO `clientes` (`nombrecliente`, `cuilcliente`, `telefonocliente`, `fechaAltaCliente`) VALUES ("' . $nombre . '","' . $cuil . '", "' . $telefono . '","' . $currentDate . '");');
+                                    
+                                        array_push($correcto, $nombre);
+
+                                        $consulta= $con->query('SELECT * FROM clientes WHERE  nombrecliente = "'.$nombre.'"');
+                                        $rtdoconsulta = $consulta->fetch_assoc();
+                                        $idcliente = $rtdoconsulta['idcliente'];
+                                        $rtdoemp = $con->query('INSERT INTO infocliente (cliente_id, empresacliente_id, emailcliente) VALUES ("' . $idcliente . '","' . $idempresa . '","' . $email . '");');
                              
+                                    }
+                                
+                                    
                             }else{
 
                                 array_push($yaAgregados, $nombre);
+                                echo $highestRow;
 
                             }
                         }
                     
-                     
+                        
+                            //header("location:../SeguimientoContable/clientesEmpresa.php?");
+                        
                 unlink($archivo);
               }
               }
